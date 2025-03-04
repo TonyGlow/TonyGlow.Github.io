@@ -1,14 +1,15 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(to bottom, #f4f4f4, #e0e0e0);
+    color: #333;
 }
 
 header {
-    background-color: #333;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
     color: #fff;
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
 }
 
@@ -24,6 +25,7 @@ nav ul li {
 nav ul li a {
     color: #333;
     text-decoration: none;
+    font-weight: 600;
 }
 
 .container {
@@ -32,20 +34,21 @@ nav ul li a {
 }
 
 .sidebar {
-    background: linear-gradient(to bottom, #b3d9ff, #80bfff);
+    background: linear-gradient(to bottom, #6a11cb, #2575fc);
     padding: 20px;
     width: 200px;
+    color: #fff;
 }
 
 .content {
     flex: 1;
     padding: 20px;
-    background-color: #002b5c;
+    background: linear-gradient(to bottom, #002b5c, #0056b3);
     color: #fff;
 }
 
 .hero {
-    background: url('images/hero.jpg') no-repeat center center/cover;
+    background: linear-gradient(to bottom, #6a11cb, #2575fc);
     color: #fff;
     height: 300px;
     display: flex;
@@ -53,6 +56,7 @@ nav ul li a {
     justify-content: center;
     align-items: center;
     text-align: center;
+    border-radius: 10px;
 }
 
 .hero h2 {
@@ -65,19 +69,22 @@ nav ul li a {
 }
 
 .cta-button {
-    background-color: #007bff;
+    background: linear-gradient(to right, #ff512f, #dd2476);
     color: #fff;
-    padding: 10px 20px;
+    padding: 15px 20px;
     text-decoration: none;
     border-radius: 5px;
     margin-top: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    border: none;
 }
 
 .cta-button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to right, #dd2476, #ff512f);
 }
 
-.games-list {
+.games-list, .game-detail {
     text-align: center;
 }
 
@@ -101,10 +108,33 @@ nav ul li a {
     width: 150px;
     height: 150px;
     border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.games-list ul li img:hover {
+    transform: scale(1.1);
+}
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    margin-bottom: 20px;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 10px;
 }
 
 footer {
-    background-color: #333;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
     color: #fff;
     text-align: center;
     padding: 10px 0;
