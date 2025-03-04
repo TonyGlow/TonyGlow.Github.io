@@ -5,13 +5,19 @@ const context = canvas.getContext('2d');
 canvas.width = 800;
 canvas.height = 600;
 
+// Load car image
+const carImage = new Image();
+carImage.src = 'download.png';
+
 // Game variables
 let car = {
     x: canvas.width / 2 - 25,
     y: canvas.height - 100,
     width: 50,
     height: 100,
-    speed: 5
+    speed: 5,
+    dx: 0,
+    dy: 0
 };
 
 let keys = {
@@ -45,18 +51,25 @@ function gameLoop() {
 
 // Update game state
 function update() {
-    if (keys.left && car.x > 0) car.x -= car.speed;
-    if (keys.right && car.x + car.width < canvas.width) car.x += car.speed;
-    if (keys.up && car.y > 0) car.y -= car.speed;
-    if (keys.down && car.y + car.height < canvas.height) car.y += car.speed;
+    car.dx = 0;
+    car.dy = 0;
+
+    if (keys.left && car.x > 0) car.dx = -car.speed;
+    if (keys.right && car.x + car.width < canvas.width) car.dx = car.speed;
+    if (keys.up && car.y > 0) car.dy = -car.speed;
+    if (keys.down && car.y + car.height < canvas.height) car.dy = car.speed;
+
+    car.x += car.dx;
+    car.y += car.dy;
 }
 
 // Draw game elements
 function draw() {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = 'red';
-    context.fillRect(car.x, car.y, car.width, car.height);
+    context.drawImage(carImage, car.x, car.y, car.width, car.height);
 }
 
 // Start the game loop
-gameLoop();
+carImage.onload = () => {
+    gameLoop();
+};
